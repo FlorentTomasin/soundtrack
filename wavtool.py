@@ -2,13 +2,14 @@
 # Title: signal_treatment
 # Author: Baptiste TOMASIN
 ###############################
-'''
-In this files you can find different tools to wav file, like:
-    -open a wav file and extract its sample rate
-    -save a signal in wav file
+"""
+This py file provides different tools to manage the wav files:
+    - Open a wav file and extract its sample rate
+    - Save a signal in wav file
 
-TODO: -function play 
-'''
+TODO: -function play
+"""
+
 ###############################
 # Imports
 ###############################
@@ -19,10 +20,10 @@ import numpy
 ###############################
 # Functions
 ###############################
-def open_wave(path):
+def open_wav(path):
     """
-    Convert WAVE file to numpy 1D float array and sample frequency
-    It supporte only mono and only 8, 16 or 32 bits WAVE files.
+    Convert a WAV file to a 1D numpy float array and samples the frequency.
+    It supportes only mono and only 8, 16 or 32 bits encoded WAV files.
     """
     w = wave.open(path, 'rb')
     samplewidth = w.getsampwidth()
@@ -35,9 +36,9 @@ def open_wave(path):
 
 def save_wav(file_name, soundtrack, sample_rate):
     """
-    https://stackoverflow.com/questions/33879523/python-how-can-i-generate-a-wav-file-with-beeps
+    This function all to save a soundtrack into a WAV audio file.
     """
-    # Open up a wav file
+    # Open a wav file
     wav_file=wave.open(file_name, "w")
 
     # wav params

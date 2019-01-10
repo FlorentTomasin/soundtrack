@@ -39,7 +39,6 @@ TODO:
 ###############################
 import math
 import random
-import wavtool
 
 ###############################
 # Globals
@@ -48,6 +47,7 @@ NB_NOTES_DIATONIC=8 # [do, ré, mi, fa, sol, la, si, do]
 NOTE_DURATION=140   # Milliseconds
 SAMPLE_RATE=44100.0 # Frequence of the sample rate
 FNOTE=1*440.0       # Using La currently as a fundamental
+
 ###############################
 # Functions
 ###############################
@@ -110,20 +110,6 @@ def init_diatonic_scale(fnote):
 
     return (freq_scale)
 
-# def init_time(sample_rate, duration):
-#     """
-#     Generate a time tab representing the sampling value.
-
-#     Example: for a 4s soundtrack and a sampling of 4,
-#              it generates a tab of size 16 where time
-#              value are separated by 0,22s samples.
-
-#     duration:      Soundtrack duration.
-#     sample_rate: Defines the step between each sample of the track.
-#     """
-#     time_scale=[i*duration/(sample_rate*duration) for i in range (int(duration*sample_rate))]
-#     return (time_scale)
-
 def generate_sinewave(sample_rate, duration, freq, amplitude, phase):
     """
     Generate a sinusoidal signal at the given frequence for a given time.
@@ -179,10 +165,3 @@ def generate_soundtrack(fnote, sample_rate):
             soundtrack+=generate_sinewave(sample_rate, NOTE_DURATION*random.uniform(0.8,2.0), freq_scale[int(i)], random.uniform(0.6,1.0), 0.0)
 
     return (soundtrack)
-
-
-###############################
-# Run
-###############################
-#soundtrack=generate_soundtrack(FNOTE, SAMPLE_RATE)
-#wavtool.save_wav("output.wav", soundtrack, SAMPLE_RATE)
